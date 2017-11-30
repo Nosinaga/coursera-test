@@ -77,9 +77,10 @@ function buildAndShowHomeHTML (categories) {
 
 function chooseRandomCategory (categories) {
   var randomArrayIndex = Math.floor(Math.random() * categories.length);
-  console.log(categories[randomArrayIndex]);
   return categories[randomArrayIndex];
 }
+
+
 
 
 dc.loadMenuCategories = function () {
