@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  function (data) {buildAndShowHomeHTML(data)}, 
+  buildAndShowHomeHTML,
   true);  
 });
 
@@ -65,12 +65,12 @@ function buildAndShowHomeHTML (categories) {
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
     function (homeHtml) {
-    
-    var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
-    var homeHtmlToInsertIntoMainPage = insertProperty (homeHtml); "randomCategoryShortName", '\''+chosenCategoryShortName+'\'';
-
-    insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
-
+    var chosenCategoryShortName = chooseRandomCategory(categories).short_name;     
+      chosenCategoryShortName = "'" + chosenCategoryShortName + "'";
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", chosenCategoryShortName);
+      console.log(chosenCategoryShortName);
+      console.log("printiong",homeHtmlToInsertIntoMainPage);
+      insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
     },
     false); 
 }
